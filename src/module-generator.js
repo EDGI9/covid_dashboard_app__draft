@@ -11,7 +11,7 @@ function generateArrayModule(moduleLoaderPayload)
 
 function generateObjectModule(moduleLoaderPayload)
 {
-    return ( moduleLoaderIsValid(moduleLoaderPayload) ) ? generateModule([], moduleLoaderPayload) : {};
+    return ( moduleLoaderIsValid(moduleLoaderPayload) ) ? generateModule({}, moduleLoaderPayload) : {};
 }
 
 function generateModule(structurePayload, moduleLoaderPayload)
