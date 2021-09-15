@@ -8,6 +8,19 @@
   </div>
 </template>
 
+<script>
+const _summaryStore = "summaryStore/";
+
+export default {
+  mounted()
+  {
+
+    this.$store.dispatch( _summaryStore + 'GET_TOTAL_SUMMARY');
+
+  }
+}
+</script>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
