@@ -1,12 +1,14 @@
+import Entities from '../../entities';
+import Services from '../../services';
 import Api from '../../api';
 
 const _store_module = {
     namespaced: true,
     state: {
-        totals: 'some'
+        countryTotals: 'some'
     },
     getters:{
-        TOTALS: state => { return state.totals; }
+        COUNTRY_TOTALS: state => { return state.countryTotals; }
     },
     actions:{
         GET_COUNTRY_TOTALS: ({commit}, actionPayload ) => {
@@ -22,8 +24,12 @@ const _store_module = {
     mutations:{
         UPDATE_COUNTRY_TOTALS: (state, mutationPayload) => {
 
-            console.log(state);
-            console.log('HERE -->',mutationPayload);
+            const entities = {
+                countryStatusEntity: Entities.countryStatusEntity,
+                dateCaseEntity: Entities.dateCaseEntity
+            };
+
+            state.countryTotals = Services.countryService.processCountryData(mutationPayload, entities);
 
         }
     }
