@@ -5,7 +5,6 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
-    {{countryTotals}}
   </div>
 </template>
 
@@ -20,16 +19,19 @@ export default {
   {
     //this.$store.dispatch( _summaryStore + 'GET_TOTAL_SUMMARY');
 
-    const tempPayload = {
+    /*const tempPayload = {
       countryName: 'portugal',
       status: 'confirmed'
     };
 
-    this.$store.dispatch( _countryStore + 'GET_COUNTRY_TOTALS', tempPayload );
+    this.$store.dispatch( _countryStore + 'GET_COUNTRY_TOTALS', tempPayload ); */
+
+    this.$store.dispatch( _countryStore + 'GET_ALL_COUNTRIES' );
   },
   computed: {
     ...mapGetters({
       totalSummary: _summaryStore + 'TOTAL_SUMMARY',
+      countries: _countryStore + 'COUNTRIES',
       countryTotals: _countryStore + 'COUNTRY_TOTALS'
     })
   }

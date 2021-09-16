@@ -1,14 +1,12 @@
 const _entity_module = (
     idPayload,
     namePayload,
-    statusDescriptionPayload,
-    statusesPayload,
+    isoPayload,
 ) => {
     return {
         id: idPayload || '',
         name: namePayload || '',
-        statusDescription: statusDescriptionPayload || '',
-        statuses: statusesPayload || []
+        iso: isoPayload || ''
     }
 };
 

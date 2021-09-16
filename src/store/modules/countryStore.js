@@ -5,12 +5,23 @@ import Api from '../../api';
 const _store_module = {
     namespaced: true,
     state: {
-        countryTotals: 'some'
+        coutries: [],
+        countryTotals: Entities.countryStatusEntity()
     },
     getters:{
+        COUNTRIES: state => { return state.coutries; },
         COUNTRY_TOTALS: state => { return state.countryTotals; }
     },
     actions:{
+        GET_ALL_COUNTRIES: ({commit}) => {
+
+            const endpoint = Api.utilsApi.buildEndpoint(Api.resourceGroupApi.countries);
+
+            Api.serviceApi.get(endpoint, res => {
+                commit( 'UPDATE_COUNTRIES', res);
+            });
+
+        },
         GET_COUNTRY_TOTALS: ({commit}, actionPayload ) => {
 
             const endpoint = Api.utilsApi.buildEndpoint(Api.resourceGroupApi.dayOneTotals, actionPayload.countryName, actionPayload.status);
@@ -22,6 +33,15 @@ const _store_module = {
         }
     },
     mutations:{
+        UPDATE_COUNTRIES: (state, mutationPayload) => {
+
+            const entities = {
+                countryEntity: Entities.countryEntity
+            };
+
+            state.coutries = Services.countryService.processCountryData(mutationPayload, entities);
+
+        },
         UPDATE_COUNTRY_TOTALS: (state, mutationPayload) => {
 
             const entities = {
@@ -29,8 +49,7 @@ const _store_module = {
                 dateCaseEntity: Entities.dateCaseEntity
             };
 
-            state.countryTotals = Services.countryService.processCountryData(mutationPayload, entities);
-
+            state.countryTotals = Services.countryService.processCountriesTotalData(mutationPayload, entities);
         }
     }
 };
