@@ -1,5 +1,14 @@
-
-<section class="summary-view">
+<div class="summary-view">
   <h1>summary-view Component</h1>
-</section>
+
+  <filter-component
+    v-bind:filterData="countries"
+  />
+
+  <br/>
+
+  <table-component
+    v-bind:tableData="totalSummary"
+  />
+</div>
 
