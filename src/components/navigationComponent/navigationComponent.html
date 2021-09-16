@@ -1,0 +1,9 @@
+<div class="navigation-component">
+
+  <router-link 
+    v-for="( item, index) in sortRoutes(routes)"
+    v-bind:key="index"
+    v-bind:to="item.path"
+  >{{capitalizeRouteName(item.name)}}</router-link>
+    
+</div>
