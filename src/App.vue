@@ -5,18 +5,33 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
+    {{countryTotals}}
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 const _summaryStore = "summaryStore/";
+const _countryStore = "countryStore/";
 
 export default {
   mounted()
   {
+    //this.$store.dispatch( _summaryStore + 'GET_TOTAL_SUMMARY');
 
-    this.$store.dispatch( _summaryStore + 'GET_TOTAL_SUMMARY');
+    const tempPayload = {
+      countryName: 'portugal',
+      status: 'confirmed'
+    };
 
+    this.$store.dispatch( _countryStore + 'GET_COUNTRY_TOTALS', tempPayload );
+  },
+  computed: {
+    ...mapGetters({
+      totalSummary: _summaryStore + 'TOTAL_SUMMARY',
+      countryTotals: _countryStore + 'COUNTRY_TOTALS'
+    })
   }
 }
 </script>
