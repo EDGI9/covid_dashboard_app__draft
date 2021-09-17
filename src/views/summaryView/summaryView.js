@@ -9,18 +9,18 @@ const _graphStore = "graphStore/";
 
 export default {
   name: 'summary-view',
-  created(){
-    this.init();
+  components:{
+    'filter-component': FilterComponent,
+    'table-component': TableComponent
   },
   computed:{
     ...mapGetters({
       totalSummary: _summaryStore + 'TOTAL_SUMMARY',
       countries: _countryStore + 'COUNTRIES',
     }),
-  },
-  components:{
-    'filter-component': FilterComponent,
-    'table-component': TableComponent
+  },  
+  created(){
+    this.init();
   },
   data(){
     return {

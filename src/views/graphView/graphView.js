@@ -6,9 +6,7 @@ const _graphStore = "graphStore/";
 
 export default {
   name: 'graph-view',
-  created(){
-    this.init(this.graphData.data);
-  },
+  
   components:{
     'chart-component': ChartComponent
   },
@@ -16,6 +14,8 @@ export default {
     ...mapGetters({
       graphData: _graphStore + 'GRAPH_DATA'
     }),
+  },created(){
+    this.init(this.graphData.data);
   },
   data()
   {
@@ -42,6 +42,7 @@ export default {
     graphData:{
       handler(updatedValuePayload)
       {
+        console.log('upda', updatedValuePayload);
         this.init(updatedValuePayload.data);
       },
     },
