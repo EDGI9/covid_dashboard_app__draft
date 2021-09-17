@@ -7,7 +7,7 @@ const _entity_module = (
         id: idPayload || '',
         name: namePayload || '',
         iso: isoPayload || ''
-    }
+    };
 };
 
 export default _entity_module;

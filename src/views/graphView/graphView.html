@@ -1,5 +1,9 @@
 
-<section class="graph-view">
-  <h1>graph-view Component</h1>
-</section>
+<div class="graph-view">
+  {{graphData.title}}
+  {{graphData.type}}
+  <chart-component
+    v-bind:chartData="chartData"
+  />
+</div>
 

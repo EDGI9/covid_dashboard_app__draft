@@ -13,7 +13,7 @@ const _entity_module = (
         deaths: deathsPayload || 0,
         recoveries: recoveriesPayload || 0,
         total: totalPayload || 0 
-    }
+    };
 };
 
 export default _entity_module;

@@ -1,0 +1,19 @@
+<div class="filter-component">
+  
+  <div class="form-group has-search">
+    <span class="bi bi-search form-control-feedback"></span>
+    <input type="text" class="form-control" placeholder="Search" v-model="searchStr" @input="filterSearchData" />
+
+    <ul v-show="isOpen" class="autocomplete-results">
+
+      <li
+        class="autocomplete-result"
+        v-for="(result, index) in results" v-bind:key="index"
+        v-on:click="selectSearchResult(result.name)"
+        >
+        {{ result.name }}
+      </li>
+
+    </ul>
+  </div>
+</div>

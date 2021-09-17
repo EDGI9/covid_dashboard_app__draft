@@ -7,7 +7,7 @@ const _entity_module = (
         id: idPayload || '',
         date: datePayload || '',
         cases: casePayload || 0
-    }
+    };
 };
 
 export default _entity_module;
