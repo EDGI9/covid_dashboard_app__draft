@@ -1,0 +1,11 @@
+<div class="summary-view">
+  <filter-component
+    v-bind:filterData="countries"
+    v-on:filter-table-data = "filterTableData"
+  />
+  <br/>
+  <table-component
+    v-bind:tableData="results"
+  />
+</div>
+
