@@ -9,7 +9,7 @@ const _entity_module = (
         name: namePayload || '',
         statusDescription: statusDescriptionPayload || '',
         statuses: statusesPayload || []
-    }
+    };
 };
 
 export default _entity_module;
