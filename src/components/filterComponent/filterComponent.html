@@ -1,19 +1,35 @@
 <div class="filter-component">
-  
+
   <div class="form-group has-search">
-    <span class="bi bi-search form-control-feedback"></span>
-    <input type="text" class="form-control" placeholder="Search" v-model="searchStr" @input="filterSearchData" />
 
-    <ul v-show="isOpen" class="autocomplete-results">
+    <div class="row">
 
-      <li
-        class="autocomplete-result"
-        v-for="(result, index) in results" v-bind:key="index"
-        v-on:click="selectSearchResult(result.name)"
-        >
-        {{ result.name }}
-      </li>
+      <div v-bind:class="{ 'col-8': hasStatussesData(statussesFilterData), 'col-12': !hasStatussesData(statussesFilterData) }">
+        <input type="text" class="form-control" placeholder="Search" v-model="searchStr" @input="filterSearchData" />
+  
+        <ul v-show="isOpen" class="autocomplete-results">
+  
+        <li
+          class="autocomplete-result"
+          v-for="(result, index) in results" v-bind:key="index"
+          v-on:click="selectSearchResult(result.name)"
+          >
+          {{ result.name }}
+        </li>
+  
+      </ul>
+      </div>
+      <div class="col-4" v-if="hasStatussesData(statussesFilterData)">
+        <select class="form-select" v-model="statusSelectedOption" v-on:change="updateFilterRequestSelectedStatus">
+          <option v-for="(item, index) in statussesFilterData"
+           v-bind:key="index" 
+           v-bind:id="item.id"
+           v-bind:value="item.value"
+          >{{item.description}}</option>
+        </select>
+      </div>
 
-    </ul>
+    </div>   
+    
   </div>
 </div>
