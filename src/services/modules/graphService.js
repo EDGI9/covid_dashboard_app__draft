@@ -1,4 +1,3 @@
-//import Common from '../../common';
 
 function processGraphData(dataPayload, entitiesPayload)
 {

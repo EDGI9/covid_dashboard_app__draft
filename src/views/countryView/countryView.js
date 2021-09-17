@@ -5,6 +5,7 @@ import Utils from '../../utils';
 
 const _countryStore = "countryStore/";
 const _graphStore = "graphStore/";
+const _statusesStore = "statusesStore/";
 
 export default {
   name: 'country-view',
@@ -16,6 +17,7 @@ export default {
     ...mapGetters({
       countryTotals: _countryStore + 'COUNTRY_TOTALS',
       countries: _countryStore + 'COUNTRIES',
+      statusses: _statusesStore + 'STATUSSES_DATA',
     }),
   },
   created(){
@@ -29,6 +31,7 @@ export default {
   methods:{
     init(){
       this.$store.dispatch( _countryStore + 'GET_ALL_COUNTRIES' );
+      this.$store.dispatch( _statusesStore + 'GET_STATUSSES_DATA' );
 
       const tempPayload = {
         countryName: 'portugal',

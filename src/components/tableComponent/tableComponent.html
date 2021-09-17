@@ -3,24 +3,24 @@
   <table class="table table-striped table-dark">
     <thead>
       <tr v-if="tableData[0]">
-        <th scope="col" v-if="(tableData[0].name)">Country Name</th>
-        <th scope="col" v-if="(tableData[0].activeCases)">Active Cases</th>
-        <th scope="col" v-if="(tableData[0].deaths)">Deaths</th>
-        <th scope="col" v-if="(tableData[0].recoveries)">Recoveries</th>
-        <th scope="col" v-if="(tableData[0].total)">Total</th>
-        <th scope="col" v-if="(tableData[0].date)">Date</th>
-        <th scope="col" v-if="(tableData[0].cases)">Cases</th>
+        <th scope="col" v-if="isValid(tableData[0].name)">Country Name</th>
+        <th scope="col" v-if="isValid(tableData[0].activeCases)">Active Cases</th>
+        <th scope="col" v-if="isValid(tableData[0].deaths)">Deaths</th>
+        <th scope="col" v-if="isValid(tableData[0].recoveries)">Recoveries</th>
+        <th scope="col" v-if="isValid(tableData[0].total)">Total</th>
+        <th scope="col" v-if="isValid(tableData[0].date)">Date</th>
+        <th scope="col" v-if="isValid(tableData[0].cases)">Cases</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="( item, index ) in tableData" v-bind:key="index" v-bind:id="item.id">
-        <td v-if="item.name">{{item.name}}</td>
-        <td v-if="item.activeCases">{{item.activeCases}}</td>
-        <td v-if="item.deaths">{{item.deaths}}</td>
-        <td v-if="item.recoveries">{{item.recoveries}}</td>
-        <td v-if="item.total">{{item.total}}</td>
-        <td v-if="item.date">{{item.date}}</td>
-        <td v-if="item.cases">{{item.cases}}</td>
+        <td v-if="isValid(item.name)">{{item.name}}</td>
+        <td v-if="isValid(item.activeCases)">{{item.activeCases}}</td>
+        <td v-if="isValid(item.deaths)">{{item.deaths}}</td>
+        <td v-if="isValid(item.recoveries)">{{item.recoveries}}</td>
+        <td v-if="isValid(item.total)">{{item.total}}</td>
+        <td v-if="isValid(item.date)">{{item.date}}</td>
+        <td v-if="isValid(item.cases)">{{item.cases}}</td>
       </tr>
     </tbody>
   </table>

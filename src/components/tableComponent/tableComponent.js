@@ -8,6 +8,12 @@ export default {
       default(){ return []; }
     }
   },
-}
+  methods:{
+    isValid(propPayload)
+    {
+      return ((propPayload !== null && propPayload!== undefined && propPayload.toString() !== ''));
+    }
+  }
+};
 
 
