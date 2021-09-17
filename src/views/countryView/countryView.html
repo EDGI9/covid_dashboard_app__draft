@@ -1,5 +1,12 @@
-
-<section class="country-view">
+<div class="country-view">
   <h1>country-view Component</h1>
-</section>
+  <filter-component
+    v-bind:filterData="countries"
+    v-on:filter-table-data = "filterTableData"
+  />
+  <br/>
+  <table-component
+    v-bind:tableData="results"
+  />
+</div>
 
