@@ -13,21 +13,6 @@ export default {
   extends: Bar,
   data(){
     return{
-      chartdata: {
-        labels: ['January', 'February'],
-        datasets: [
-          {
-            label: 'Data One',
-            backgroundColor: '#f87979',
-            data: [40, 20]
-          },
-          {
-            label: 'Data Two',
-            backgroundColor: '#f87960',
-            data: [100, 10]
-          }
-        ]
-      },
       options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -41,7 +26,6 @@ export default {
   },
   mounted() {
     const tempChartData = Utils.chartUtils.generateChartDataObject(this.chartData);
-    console.log(tempChartData);
     this.renderChart(tempChartData, this.options);
   }
 };
