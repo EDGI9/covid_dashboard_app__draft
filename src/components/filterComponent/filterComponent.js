@@ -28,10 +28,16 @@ export default {
       results: [],      
       isOpen: false,
       statusSelectedOption: '',
-      filterRequestPayload:{
+      filterSelectedOptionsPayload:{
         searchedCountry: '',
         selectedStatus: '',
         canEmit:false
+      },
+      filterRequestPayload: {
+        context: null,
+        searchedCountry: '',
+        selectedStatus: '',
+        isSpecificCountryFilterType: false
       }
     };
   },
@@ -43,41 +49,60 @@ export default {
     filterSearchData()
     {
       this.results = Utils.filterUtils.filterObjectByNameProperty(this.countriesFilterData, this.searchStr, true);
-      this.isOpen = ((this.results.length > 0));
+      this.isOpen = (this.results.length > 0);
 
-      this.filterRequestPayload.searchedCountry = (Common.arrayCommon.isValid(this.results)) ? this.results[0].name: '';
-      this.filterRequestPayload.selectedStatus = this.statusSelectedOption;
-      this.filterRequestPayload.canEmit = (Common.arrayCommon.isValid(this.results));
+      const isSpecificCountryFilter = (Common.arrayCommon.isValid(this.statussesFilterData));
+      const noSpecificCountryIsSelected = (this.results.length === 0 || this.results.length > 1);
 
-      if(!this.statussesFilterData.length)
+      this.filterSelectedOptionsPayload.searchedCountry = '';
+      this.filterSelectedOptionsPayload.selectedStatus = '';
+      this.filterSelectedOptionsPayload.canEmit = false;
+
+      if(isSpecificCountryFilter && noSpecificCountryIsSelected && Common.arrayCommon.isValid(this.results))
       {
-        Utils.filterUtils.emitTableDataFilterRequest(this,this.searchStr);
+        this.filterSelectedOptionsPayload.searchedCountry = this.results[0].name;
+        this.filterSelectedOptionsPayload.selectedStatus = this.statusSelectedOption;
+        this.filterSelectedOptionsPayload.canEmit = (Common.arrayCommon.isValid(this.results));
       }
 
-      /*if( !this.searchStr && this.results.length === 0)
+      if(!isSpecificCountryFilter && this.searchStr && Common.arrayCommon.isValid(this.results))
       {
-        Utils.filterUtils.emitTableDataFilterRequest(this);
-      } */   
+        this.filterSelectedOptionsPayload.searchedCountry = this.searchStr;
+        this.filterSelectedOptionsPayload.canEmit = (this.searchStr !== '');
+      }
+      
+      if(!isSpecificCountryFilter && !this.searchStr && !Common.arrayCommon.isValid(this.results))
+      {
+        this.filterSelectedOptionsPayload.canEmit = (this.searchStr === '');
+      }
+
+      this.filterRequestPayload.context = this;
+      this.filterRequestPayload.searchedCountry = this.filterSelectedOptionsPayload.searchedCountry;
+      this.filterRequestPayload.selectedStatus = this.filterSelectedOptionsPayload.selectedStatus;
+      this.filterRequestPayload.isSpecificCountryFilterType = isSpecificCountryFilter;
+
+      this.emitFilterRequest();
     },
     selectSearchResult(resultPayload)
     {
       this.searchStr = resultPayload;
+      this.filterSelectedOptionsPayload.searchedCountry = resultPayload;
       this.filterRequestPayload.searchedCountry = resultPayload;
 
-      console.log(resultPayload);
-      console.log(this.filterRequestPayload);
-
-
       this.isOpen = false;
-      Utils.filterUtils.emitTableDataFilterRequest(this,resultPayload);
+      this.emitFilterRequest();
     },
     updateFilterRequestSelectedStatus()
     {
+      this.filterSelectedOptionsPayload.selectedStatus = this.statusSelectedOption;
       this.filterRequestPayload.selectedStatus = this.statusSelectedOption;
-
-      if(this.filterRequestPayload.canEmit)
+      this.emitFilterRequest();
+    },
+    emitFilterRequest()
+    {
+      if(this.filterSelectedOptionsPayload.canEmit)
       {
-        Utils.filterUtils.emitTableDataFilterRequest(this,this.filterRequestPayload);
+        Utils.filterUtils.emitTableDataFilterRequest(this.filterRequestPayload);
       }
     },
     handleClickOutside(event) {
