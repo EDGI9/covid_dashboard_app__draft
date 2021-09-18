@@ -5,10 +5,10 @@ export default {
   name: 'chart-component',
   props: {
     chartData: {
-      type: [],
-      require: false,
-      default(){ return []; }
-    }
+      type: Object,
+      required: false,
+      default(){ return {}; }
+    },
   },
   extends: Bar,
   data(){

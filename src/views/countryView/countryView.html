@@ -2,8 +2,16 @@
   <filter-component
     v-bind:countriesFilterData="countries"
     v-bind:statussesFilterData="statusses"
+    v-bind:preSelectedSearchStr="countryTotals.name"
     v-on:filter-table-data = "filterTableData"
   />
+  <br/>
+
+  <div v-if="countryTotals.id">
+    {{countryTotals.name}}
+    {{countryTotals.statusDescription}}
+  </div>
+ 
   <br/>
   <table-component
     v-bind:tableData="results"

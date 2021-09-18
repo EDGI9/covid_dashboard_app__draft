@@ -4,7 +4,7 @@ export default {
   props: {
     tableData: {
       type: Array,
-      require: false,
+      required: false,
       default(){ return []; }
     }
   },

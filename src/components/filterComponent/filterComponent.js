@@ -6,13 +6,18 @@ export default {
   props: {
     countriesFilterData: {
       type: Array,
-      require: false,
+      required: false,
       default(){ return []; }
     },
     statussesFilterData: {
       type: Array,
-      require: false,
+      required: false,
       default(){ return []; }
+    },
+    preSelectedSearchStr: {
+      type: String,
+      required: false,
+      default(){ return '';}
     }
   },
   mounted() {
@@ -45,6 +50,12 @@ export default {
     init()
     {
       this.statusSelectedOption = (Common.arrayCommon.isValid(this.statussesFilterData)) ? this.statussesFilterData[0].value : '';
+
+      if(this.preSelectedSearchStr)
+      {
+        this.searchStr = this.preSelectedSearchStr;
+        this.filterSearchData();
+      }
     },
     filterSearchData()
     {
@@ -52,26 +63,26 @@ export default {
       this.isOpen = (this.results.length > 0);
 
       const isSpecificCountryFilter = (Common.arrayCommon.isValid(this.statussesFilterData));
-      const noSpecificCountryIsSelected = (this.results.length === 0 || this.results.length > 1);
+      const hasValidResults = Common.arrayCommon.isValid(this.results);
 
       this.filterSelectedOptionsPayload.searchedCountry = '';
       this.filterSelectedOptionsPayload.selectedStatus = '';
       this.filterSelectedOptionsPayload.canEmit = false;
 
-      if(isSpecificCountryFilter && noSpecificCountryIsSelected && Common.arrayCommon.isValid(this.results))
+      if(isSpecificCountryFilter && hasValidResults)
       {
         this.filterSelectedOptionsPayload.searchedCountry = this.results[0].name;
         this.filterSelectedOptionsPayload.selectedStatus = this.statusSelectedOption;
-        this.filterSelectedOptionsPayload.canEmit = (Common.arrayCommon.isValid(this.results));
+        this.filterSelectedOptionsPayload.canEmit = hasValidResults;
       }
 
-      if(!isSpecificCountryFilter && this.searchStr && Common.arrayCommon.isValid(this.results))
+      if(!isSpecificCountryFilter && this.searchStr && hasValidResults)
       {
         this.filterSelectedOptionsPayload.searchedCountry = this.searchStr;
         this.filterSelectedOptionsPayload.canEmit = (this.searchStr !== '');
       }
       
-      if(!isSpecificCountryFilter && !this.searchStr && !Common.arrayCommon.isValid(this.results))
+      if(!isSpecificCountryFilter && !this.searchStr && !hasValidResults)
       {
         this.filterSelectedOptionsPayload.canEmit = (this.searchStr === '');
       }

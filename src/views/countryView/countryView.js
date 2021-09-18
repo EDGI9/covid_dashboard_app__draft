@@ -32,18 +32,15 @@ export default {
     init(){
       this.$store.dispatch( _countryStore + 'GET_ALL_COUNTRIES' );
       this.$store.dispatch( _statusesStore + 'GET_STATUSSES_DATA' );
-
+    },
+    filterTableData(filterRequestPayload)
+    {        
       const tempPayload = {
-        countryName: 'portugal',
-        status: 'confirmed'
+        countryName: filterRequestPayload.searchedCountry,
+        status: filterRequestPayload.selectedStatus
       };
 
       this.$store.dispatch( _countryStore + 'GET_COUNTRY_TOTALS', tempPayload );
-    },
-    filterTableData(filterPayload)
-    {     
-      this.updateResults(Utils.filterUtils.filterObjectByNameProperty(this.countryTotals, filterPayload));
-      this.updateGraphData(this.results);      
     },
     updateResults(resultsPayload)
     {
@@ -54,7 +51,7 @@ export default {
       if(dataPayload)
       {
         const graphRequestPayload = {
-          type: 'country_day_one',
+          type: 'country',
           data: dataPayload
         };
 
@@ -67,7 +64,7 @@ export default {
       handler(updatedValuePayload)
       {
         this.updateResults(updatedValuePayload);
-        this.updateGraphData(updatedValuePayload);
+        this.updateGraphData(Utils.filterUtils.filterObjectByNameProperty(this.countryTotals, updatedValuePayload.statuses));
       },
       deep: true
     }

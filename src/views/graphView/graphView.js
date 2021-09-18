@@ -5,8 +5,7 @@ import ChartComponent from '../../components/chartComponent';
 const _graphStore = "graphStore/";
 
 export default {
-  name: 'graph-view',
-  
+  name: 'graph-view',  
   components:{
     'chart-component': ChartComponent
   },
@@ -15,7 +14,7 @@ export default {
       graphData: _graphStore + 'GRAPH_DATA'
     }),
   },created(){
-    this.init(this.graphData.data);
+    this.init(this.graphData);
   },
   data()
   {
@@ -24,26 +23,26 @@ export default {
     };
   }, 
   methods:{
-    init(chartDataPayload){
+    init(graphDataPayload){
 
-      let tempChartData =  JSON.parse(Common.storageCommon.getItem('chartData'));
+      const graphDataStorageKey = 'graphData';
+      let tempGraphData =  JSON.parse(Common.storageCommon.getItem(graphDataStorageKey));
 
-      if(chartDataPayload.length > 0)
+      if(Common.arrayCommon.isValid(graphDataPayload.data))
       {
-        Common.storageCommon.removeItem('chartData');
-        Common.storageCommon.setItem('chartData',  JSON.stringify(chartDataPayload));
-        tempChartData = chartDataPayload;
+        Common.storageCommon.removeItem(graphDataStorageKey);
+        Common.storageCommon.setItem(graphDataStorageKey,  JSON.stringify(graphDataPayload));
+        tempGraphData = graphDataPayload;
       }
 
-      this.chartData = ( Common.arrayCommon.isValid(tempChartData) ) ? tempChartData: [];
+      this.chartData = ( Common.arrayCommon.isValid(tempGraphData.data) ) ? tempGraphData: [];
     }
   },
   watch:{
     graphData:{
       handler(updatedValuePayload)
       {
-        console.log('upda', updatedValuePayload);
-        this.init(updatedValuePayload.data);
+        this.init(updatedValuePayload);
       },
     },
     deep: true

@@ -32,9 +32,9 @@ export default {
       this.$store.dispatch( _summaryStore + 'GET_TOTAL_SUMMARY');
       this.$store.dispatch( _countryStore + 'GET_ALL_COUNTRIES' );
     },
-    filterTableData(filterPayload)
+    filterTableData(filterRequestPayload)
     {     
-      this.results = Utils.filterUtils.filterObjectByNameProperty(this.totalSummary, filterPayload);
+      this.results = Utils.filterUtils.filterObjectByNameProperty(this.totalSummary, filterRequestPayload.searchedCountry);
       this.updateGraphData(this.results);      
     },
     updateGraphData(dataPayload)

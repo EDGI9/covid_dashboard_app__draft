@@ -1,3 +1,5 @@
+import Common from '../../common';
+
 
 function processGraphData(dataPayload, entitiesPayload)
 {
@@ -6,7 +8,7 @@ function processGraphData(dataPayload, entitiesPayload)
         const result = entitiesPayload.graphEntity();
         result.title = dataPayload.type;
         result.type = dataPayload.type;
-        result.data = dataPayload.data;
+        result.data = Common.arrayCommon.isValid(dataPayload.data) ? dataPayload.data: [dataPayload.data];
 
         return result;
     }
