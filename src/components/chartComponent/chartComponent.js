@@ -25,7 +25,7 @@ export default {
     };
   },
   mounted() {
-    const tempChartData = Utils.chartUtils.generateChartDataObject(this.chartData);
+    const tempChartData = Utils.graphUtils.generateChartDataObject(this.chartData);
     this.renderChart(tempChartData, this.options);
   }
 };

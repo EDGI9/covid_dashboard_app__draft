@@ -1,3 +1,21 @@
 {
-  "message": "hello i18n !!"
+  "filter":{
+    "searchPlaceholder": "Search for a country name"
+  },
+  "table":{
+    "countryName": "Country",
+    "activeCases": "Total active cases",
+    "deaths": "Total deaths",
+    "recoveries": "Total recoveries",
+    "total": "Total population affected",
+    "date": "Date(s)",
+    "case": "Case(s)"
+  },
+  "chart":{
+    "activeCases": "Total active cases",
+    "deaths": "Total deaths",
+    "recoveries": "Total recoveries",
+    "total": "Total population affected",
+    "cases": "Total cases per day"
+  }
 }
