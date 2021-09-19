@@ -5,11 +5,11 @@ function filterObjectByNameProperty(dataPayload, namePayload, returnEmptyIfNotFo
     return (Common.arrayCommon.isValid(dataPayload) && namePayload) ? dataPayload.filter( x => x.name.toLowerCase().indexOf(namePayload.toLowerCase()) > -1 ) : ( returnEmptyIfNotFound ) ? [] : dataPayload;
 }
 
-function emitTableDataFilterRequest(contextPayload, requestPayload)
+function emitTableDataFilterRequest(requestPayload)
 {
-    if(contextPayload)
+    if(requestPayload.context)
     {
-        contextPayload.$emit('filter-table-data', requestPayload);
+        requestPayload.context.$emit('filter-table-data', requestPayload);
     }
 }
 

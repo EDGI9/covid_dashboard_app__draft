@@ -5,7 +5,7 @@ export default {
   props: {
     routes: {
       type: Array,
-      require: false,
+      required: false,
       default(){ return []; }
     }
   },

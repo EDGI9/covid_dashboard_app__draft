@@ -5,6 +5,13 @@
     v-on:filter-table-data = "filterTableData"
   />
   <br/>
+
+  <div v-if="countryTotals.id && results.length > 0">
+    {{countryTotals.name}}
+    {{countryTotals.statusDescription}}
+  </div>
+ 
+  <br/>
   <table-component
     v-bind:tableData="results"
   />

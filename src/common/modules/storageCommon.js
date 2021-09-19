@@ -1,5 +1,9 @@
 const _storage = window.sessionStorage;
 
+const _storageKeys = {
+    selectedCountry: 'selectedCountry'
+};
+
 function isStorageAvailable()
 {
     const test = "test";
@@ -42,6 +46,7 @@ function removeItem(keyPayload)
 
 
 const _common_module = {
+    keys: _storageKeys,
     setItem,
     getItem,
     removeItem
