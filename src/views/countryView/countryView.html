@@ -4,13 +4,11 @@
     v-bind:statussesFilterData="statusses"
     v-on:filter-table-data = "filterTableData"
   />
-  <br/>
 
   <div v-if="countryTotals.id && results.length > 0">
-    {{`${countryTotals.name}'s ${$t(`countryView.${countryTotals.statusDescription}`)}`}}
+    <h1 class="country-view__title">{{`${countryTotals.name}'s ${$t(`countryView.${countryTotals.statusDescription}`)}`}}</h1>    
   </div>
- 
-  <br/>
+
   <table-component
     v-bind:tableData="results"
   />

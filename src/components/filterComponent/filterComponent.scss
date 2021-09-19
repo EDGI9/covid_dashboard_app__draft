@@ -1,9 +1,14 @@
 .filter-component {
 
-    .autocomplete-results {
+  padding: 25px;
+  background-color:rgba(33, 37, 41, 1);
+  margin-bottom: 30px;
+
+  .autocomplete-results {
+        background-color: white;
         padding: 0;
         margin: 0;
-        border: 1px solid #eeeeee;
+        border: 1px solid rgba(33, 37, 41, 1);
         height: 200px;
         min-height: 100px;
         max-height: 300px;
@@ -19,7 +24,7 @@
       }
     
       .autocomplete-result:hover {
-        background-color: #4AAE9B;
+        background-color:rgba(33, 37, 41, 1);
         color: white;
-      }
+  }
 }

@@ -1,4 +1,7 @@
 {
+  "app":{
+    "title": "Covid19 Stats Report"
+  },
   "navigation": {
     "summary": "Summary",
     "graph": "Graph",
