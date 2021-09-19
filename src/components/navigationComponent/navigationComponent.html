@@ -4,6 +4,6 @@
     v-for="( item, index) in sortRoutes(routes)"
     v-bind:key="index"
     v-bind:to="item.path"
-  >{{capitalizeRouteName(item.name)}}</router-link>
+  >{{$t(`navigation.${item.name}`)}}</router-link>
     
 </div>

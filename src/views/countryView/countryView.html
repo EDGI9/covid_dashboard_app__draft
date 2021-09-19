@@ -7,8 +7,7 @@
   <br/>
 
   <div v-if="countryTotals.id && results.length > 0">
-    {{countryTotals.name}}
-    {{countryTotals.statusDescription}}
+    {{`${countryTotals.name}'s ${$t(`countryView.${countryTotals.statusDescription}`)}`}}
   </div>
  
   <br/>
