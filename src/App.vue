@@ -8,12 +8,23 @@
 </template>
 
 <script>
-import Utils from './utils';
 import NavigationComponent from './components/navigationComponent';
+import EventBus from './eventbus';
+import Utils from './utils';
+
+let _numberOfSpinners = 0;
 
 export default {
   created(){
-    this.init();    
+    EventBus.$on('show-spinner', this.showSpinner);
+    EventBus.$on('hide-spinner', this.hideSpinner);
+
+    this.init();
+  },
+  destroyed()
+  {
+    EventBus.$off('show-spinner');
+    EventBus.$off('hide-spinner');
   },
   components:{
     'navigation-component': NavigationComponent
@@ -21,6 +32,20 @@ export default {
   methods:{
     init(){
       Utils.routeUtils.gotoRoute(this,'summary');
+    },
+    showSpinner()
+    {
+      if(++_numberOfSpinners === 1)
+      {
+        this.spinner = this.$loading.show({isFullpage: true, color: '#40D8A7', zIndex: 10001});
+      }
+    },
+    hideSpinner()
+    {
+      if(--_numberOfSpinners === 0)
+      {
+        this.spinner.hide();
+      }
     },
     processRoutesData(routesPayload)
     {
