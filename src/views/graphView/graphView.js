@@ -25,6 +25,10 @@ export default {
   methods:{
     init(graphDataPayload){
       this.chartData = ( Common.arrayCommon.isValid(graphDataPayload.data) ) ? graphDataPayload: {};
+    },
+    captilizeTitle(titlePayload)
+    {
+      return (titlePayload && titlePayload === 'summary')? Common.stringCommon.capitalizeFirstLetter(titlePayload) : titlePayload;
     }
   },
   watch:{

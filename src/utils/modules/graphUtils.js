@@ -9,6 +9,19 @@ const _graphTypes = {
     }
 };
 
+function updateGraphData(contextPayload, targetStorePayload, graphTypePayload, dataPayload)
+{
+    if(contextPayload && targetStorePayload && graphTypePayload && dataPayload)
+    {
+        const graphRequestPayload = {
+            type: graphTypePayload,
+            data: dataPayload
+        };
+
+        contextPayload.$store.dispatch( targetStorePayload , graphRequestPayload);
+    }
+}
+
 function generateChartDataObject(dataPayload) {
     const result = {
         labels: [],
@@ -59,8 +72,8 @@ function buildDataSets(itemObjectPayload) {
     {
         processDataSet( itemObjectPayload, keyPayload => {
             result.push({
-                label: keyPayload,
-                backgroundColor: generateRandomColor(),
+                label: Common.translatorCommon.translate(`chart.${keyPayload}`),
+                backgroundColor: Common.colorCommon.generateRandomColor(),
                 data: []
             });
         });
@@ -74,7 +87,7 @@ function updateDataSets(dataSetPayload, itemObjectPayload)
     if(dataSetPayload && itemObjectPayload)
     {
         processDataSet( itemObjectPayload, keyPayload => {
-            const targetDataSet = dataSetPayload.find(x => x.label === keyPayload);
+            const targetDataSet = dataSetPayload.find(x => x.label === Common.translatorCommon.translate(`chart.${keyPayload}`));
             targetDataSet.data.push(itemObjectPayload[keyPayload]);
         });
     }
@@ -97,16 +110,8 @@ function processDataSet( itemObjectPayload, callback)
     }
 }
 
-function generateRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-
 const _utils_module = {
+    updateGraphData,
     generateChartDataObject
 };
 

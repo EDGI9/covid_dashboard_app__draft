@@ -45,30 +45,17 @@ export default {
     updateResults(resultsPayload)
     {
       this.results = resultsPayload.statuses;
+      const filterResult = Utils.filterUtils.filterObjectByNameProperty(this.countryTotals, resultsPayload.statuses);
+      Utils.graphUtils.updateGraphData(this, _graphStore + 'SET_GRAPH_DATA', 'country', filterResult);
     },
-    updateGraphData(dataPayload)
-    {
-      if(dataPayload)
-      {
-        const graphRequestPayload = {
-          type: 'country',
-          data: dataPayload
-        };
-
-        this.$store.dispatch( _graphStore + 'SET_GRAPH_DATA', graphRequestPayload);
-      }
-    }
   },
   watch:{
     countryTotals:{
       handler(updatedValuePayload)
       {
-        this.updateResults(updatedValuePayload);
-        this.updateGraphData(Utils.filterUtils.filterObjectByNameProperty(this.countryTotals, updatedValuePayload.statuses));
+        this.updateResults(updatedValuePayload);       
       },
       deep: true
     }
   }  
 };
-
-

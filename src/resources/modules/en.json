@@ -1,3 +1,37 @@
 {
-  "message": "hello i18n !!"
+  "app":{
+    "title": "Covid19 Stats Report"
+  },
+  "navigation": {
+    "summary": "Summary",
+    "graph": "Graph",
+    "country": "Country"
+  },
+  "filter":{
+    "searchPlaceholder": "Search for a country name"
+  },
+  "table":{
+    "countryName": "Country",
+    "activeCases": "Total active cases",
+    "deaths": "Total deaths",
+    "recoveries": "Total recoveries",
+    "total": "Total population affected",
+    "date": "Date(s)",
+    "case": "Case(s)"
+  },
+  "chart":{
+    "activeCases": "Total active cases",
+    "deaths": "Total deaths",
+    "recoveries": "Total recoveries",
+    "total": "Total population affected",
+    "cases": "Total cases per day"
+  },
+  "graphView":{
+    "titleExtender": "graph view"
+  },
+  "countryView":{
+    "confirmed": "total confirmed cases since day one",
+    "recovered": "total recovered cases since day one",
+    "deaths": "total deaths since day one"
+  }
 }

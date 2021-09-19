@@ -1,8 +1,6 @@
-
 <div class="graph-view">
-  {{graphData.title}}
+  <h1 class="graph-view__title">{{captilizeTitle(graphData.title)}} {{$t('graphView.titleExtender')}}</h1>
   <chart-component
     v-bind:chartData="chartData"
   />
 </div>
-
