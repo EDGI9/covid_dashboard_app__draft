@@ -1,7 +1,7 @@
 const _storage = window.sessionStorage;
 
 const _storageKeys = {
-    graphData: 'graphData'
+    selectedCountry: 'selectedCountry'
 };
 
 function isStorageAvailable()

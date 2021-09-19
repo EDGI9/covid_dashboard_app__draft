@@ -46,9 +46,18 @@ export default {
     {
       const hasStatussesFilterData = (Common.arrayCommon.isValid(this.statussesFilterData));
       this.statusSelectedOption = hasStatussesFilterData ? this.statussesFilterData[0].value : '';
+
+      const selectedKey = Common.storageCommon.getItem(Common.storageCommon.keys.selectedCountry);
+
+      if(selectedKey && hasStatussesFilterData)
+      {
+        this.searchStr = selectedKey;
+        this.filterSearchData();
+      }
     },
     filterSearchData()
     {
+     
       this.results = Utils.filterUtils.filterObjectByNameProperty(this.countriesFilterData, this.searchStr, true);
       this.isOpen = (this.results.length > 0);
 
@@ -90,6 +99,8 @@ export default {
       this.filterSelectedOptionsPayload.searchedCountry = resultPayload;
       this.filterRequestPayload.searchedCountry = resultPayload;
 
+      Common.storageCommon.setItem(Common.storageCommon.keys.selectedCountry, resultPayload);
+
       this.isOpen = false;
       this.emitFilterRequest();
     },
@@ -117,5 +128,3 @@ export default {
     }
   }
 };
-
-

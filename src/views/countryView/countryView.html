@@ -6,7 +6,7 @@
   />
   <br/>
 
-  <div v-if="countryTotals.id">
+  <div v-if="countryTotals.id && results.length > 0">
     {{countryTotals.name}}
     {{countryTotals.statusDescription}}
   </div>
