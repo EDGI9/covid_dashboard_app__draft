@@ -13,11 +13,6 @@ export default {
       type: Array,
       required: false,
       default(){ return []; }
-    },
-    preSelectedSearchStr: {
-      type: String,
-      required: false,
-      default(){ return '';}
     }
   },
   mounted() {
@@ -49,13 +44,8 @@ export default {
   methods: {
     init()
     {
-      this.statusSelectedOption = (Common.arrayCommon.isValid(this.statussesFilterData)) ? this.statussesFilterData[0].value : '';
-
-      if(this.preSelectedSearchStr)
-      {
-        this.searchStr = this.preSelectedSearchStr;
-        this.filterSearchData();
-      }
+      const hasStatussesFilterData = (Common.arrayCommon.isValid(this.statussesFilterData));
+      this.statusSelectedOption = hasStatussesFilterData ? this.statussesFilterData[0].value : '';
     },
     filterSearchData()
     {

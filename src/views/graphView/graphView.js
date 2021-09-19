@@ -24,18 +24,7 @@ export default {
   }, 
   methods:{
     init(graphDataPayload){
-
-      const graphDataStorageKey = 'graphData';
-      let tempGraphData =  JSON.parse(Common.storageCommon.getItem(graphDataStorageKey));
-
-      if(Common.arrayCommon.isValid(graphDataPayload.data))
-      {
-        Common.storageCommon.removeItem(graphDataStorageKey);
-        Common.storageCommon.setItem(graphDataStorageKey,  JSON.stringify(graphDataPayload));
-        tempGraphData = graphDataPayload;
-      }
-
-      this.chartData = ( Common.arrayCommon.isValid(tempGraphData.data) ) ? tempGraphData: [];
+      this.chartData = ( Common.arrayCommon.isValid(graphDataPayload.data) ) ? graphDataPayload: {};
     }
   },
   watch:{
