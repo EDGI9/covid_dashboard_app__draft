@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <div class="wrapper">
+    <div id="content-wrap">
       <navigation-component
         v-bind:routes="processRoutesData(this.$router.options.routes)"
       />
       <router-view />
-      <div class="push"></div>
     </div>
+    
     <footer-component />
   </div>
 </template>
@@ -66,17 +66,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  position: relative;
+  min-height: 100vh;  
 
-  .wrapper{
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -246px;
+  #content-wrap{
+    padding-bottom: 248px;    /* Footer height */
   }
-
-  .push{
-    height: 246px;
-  }
-  
 }
+
 </style>

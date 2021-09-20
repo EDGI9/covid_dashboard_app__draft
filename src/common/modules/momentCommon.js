@@ -15,6 +15,7 @@ function formatUtcDate(datePayload, formatOptionPayload)
 }
 
 const _common_module = {
+    moment: Moment,
     _formatOptions,
     formatUtcDate
 };

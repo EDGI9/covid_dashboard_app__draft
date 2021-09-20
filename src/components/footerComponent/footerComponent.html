@@ -4,14 +4,14 @@
     <div class="container p-4">
       <!-- Section: Social media -->
       <section class="mb-4">
-        <!-- Facebook -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-          ><b-icon icon="linkedin"></b-icon></a>
+        <!-- Linkedin -->
+        <a class="btn btn-outline-light btn-floating m-1" v-bind:href="linkedinURL" role="button"
+        target="_blank" ><b-icon icon="linkedin"></b-icon></a>
   
-        <!-- Twitter -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-          ><b-icon icon="github"></b-icon></i
-        ></a>
+        <!-- Github -->
+        <a class="btn btn-outline-light btn-floating m-1" v-bind:href="githubURL" role="button"
+        target="_blank" ><b-icon icon="github"></b-icon></i
+         ></a>
 
       </section>
       <!-- Section: Social media -->
@@ -31,8 +31,7 @@
   
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2020 Copyright:
-      <a class="text-white" href="#">vitalinosilva.com</a>
+      {{copyright}} <a class="text-white" v-bind:href="websiteURL" target="_blank">{{website}}</a>
     </div>
     <!-- Copyright -->
   </footer>
