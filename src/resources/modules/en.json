@@ -27,7 +27,7 @@
     "cases": "Total cases per day"
   },
   "graphView":{
-    "titleExtender": "cases ( Graph view )"
+    "titleExtender": "graph view"
   },
   "countryView":{
     "confirmed": "total confirmed cases since day one",
