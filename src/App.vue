@@ -70,7 +70,7 @@ export default {
   min-height: 100vh;  
 
   #content-wrap{
-    padding-bottom: 248px;    /* Footer height */
+    padding-bottom: 156px;    /* Footer height */
   }
 }
 
