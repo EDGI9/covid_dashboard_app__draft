@@ -40,7 +40,7 @@ export default {
        Common.storageCommon.removeItem(Common.storageCommon.keys.selectedCountry);
       }
     },
-    filterTableData(filterRequestPayload)
+    filterData(filterRequestPayload)
     {     
       this.results = Utils.filterUtils.filterObjectByNameProperty(this.totalSummary, filterRequestPayload.searchedCountry);
       this.updateGraphData(this.results);      

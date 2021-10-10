@@ -114,7 +114,7 @@ export default {
     {
       if(this.filterSelectedOptionsPayload.canEmit)
       {
-        Utils.filterUtils.emitTableDataFilterRequest(this.filterRequestPayload);
+        Utils.filterUtils.emitDataFilterRequest(this.filterRequestPayload);
       }
     },
     handleClickOutside(event) {

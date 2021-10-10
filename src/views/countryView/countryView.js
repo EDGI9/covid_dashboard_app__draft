@@ -33,7 +33,7 @@ export default {
       this.$store.dispatch( _countryStore + 'GET_ALL_COUNTRIES' );
       this.$store.dispatch( _statusesStore + 'GET_STATUSSES_DATA' );
     },
-    filterTableData(filterRequestPayload)
+    filterData(filterRequestPayload)
     {        
       const tempPayload = {
         countryName: filterRequestPayload.searchedCountry,
