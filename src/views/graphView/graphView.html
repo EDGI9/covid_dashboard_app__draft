@@ -1,6 +1,12 @@
 <div class="graph-view">
+  <filter-component
+    v-bind:countriesFilterData="countries"
+    v-on:filter-data = "filterData"
+  />
   <h1 class="graph-view__title">{{captilizeTitle(graphData.title)}} {{$t('graphView.titleExtender')}}</h1>
+  <!-- Using :key directive to force component to re-render after data has changed -->
   <chart-component
+    :key="graphData.title"
     v-bind:chartData="chartData"
   />
 </div>
