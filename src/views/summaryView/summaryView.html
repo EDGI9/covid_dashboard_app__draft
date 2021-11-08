@@ -1,10 +1,24 @@
 <div class="summary-view">
-  <filter-component
-    v-bind:countriesFilterData="countries"
-    v-on:filter-table-data = "filterTableData"
-  />
-  <table-component
-    v-bind:tableData="results"
-  />
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <filter-component
+          v-bind:countriesFilterData="countries"
+          v-on:filter-table-data = "filterTableData"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-body">
+            <table-component
+            v-bind:tableData="results"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 

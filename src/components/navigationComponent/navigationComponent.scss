@@ -1,14 +1,11 @@
+@import "~bootstrap/scss/bootstrap-utilities";
 .navigation-component {
-  
-  margin-bottom: 30px;
-  
   .navbar{
     padding: 25px;
 
     a {
-                      
       &.router-link-exact-active {
-          border-bottom: 1px solid gray;
+          border-bottom: 1px solid $blue-100;
       }
     }
   }    

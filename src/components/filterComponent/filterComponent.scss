@@ -1,14 +1,14 @@
+@import "~bootstrap/scss/bootstrap-utilities";
 .filter-component {
 
   padding: 25px;
-  background-color:rgba(33, 37, 41, 1);
-  margin-bottom: 30px;
+  background-color:$blue-100;
 
   .autocomplete-results {
         background-color: white;
         padding: 0;
         margin: 0;
-        border: 1px solid rgba(33, 37, 41, 1);
+        border: 1px solid $blue-300;
         height: 200px;
         min-height: 100px;
         max-height: 300px;
@@ -24,7 +24,7 @@
       }
     
       .autocomplete-result:hover {
-        background-color:rgba(33, 37, 41, 1);
+        background-color:$primary;
         color: white;
   }
 }
