@@ -1,7 +1,17 @@
 <div class="navigation-component">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand">{{$t(`app.title`)}}</a>
+    <a class="navbar-brand d-flex align-items-center">
+      <img 
+        src="@/assets/logo.svg" 
+        data-src="@/assets/logo.svg"  
+        data-srcset="@/assets/logo.svg" 
+        alt="covid-19 logo"
+        width="50px" 
+        height="50px"
+        class="mx-3">
+      {{$t(`app.title`)}}
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

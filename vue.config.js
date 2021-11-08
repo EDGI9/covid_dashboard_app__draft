@@ -1,3 +1,4 @@
+const path = require('path'); 
 module.exports = {
 
   devServer: {
@@ -15,6 +16,14 @@ module.exports = {
       localeDir: 'resources',
       enableInSFC: false
     }
-  }
+  },
+
+  configureWebpack: {  
+    resolve: {  
+      alias: {  
+        '@': path.resolve(_dirname, 'src/') 
+      },  
+    },  
+}
 
 };
